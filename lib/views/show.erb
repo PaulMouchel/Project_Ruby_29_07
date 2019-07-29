@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <title>PAGE POTIN</title>
+    </head>
+    <body>
+        <nav class="navbar text-center bg-dark justify-content-center">
+            <h1 class="text-light">Voici la page du potin n°<%= id %></h1>
+        </nav>
+        <div class="container">
+            <p>Son auteur : ==<%=gossip.author %>==</p>
+            <p>Le contenu du potin : ==<%=gossip.content %>==</p>
+            <p>Commentaires :</p>
+            <% gossip.comments.each do |comment| %>
+                <p><em><%= comment %></em></p>
+            <% end %>
+            <p>Ajouter un commentaire :</p>
+            <form action='/gossips/<%=id %>/' method='POST'>
+              Votre commentaire :  <input type='text' name='gossip_comment'/><br/>
+              <input type='submit'/>
+            </form>
+
+            <p class="text-right"><a href="/">Retour à la page d'accueil</a></p>
+            <p><a href="./edit/">Editer le potin</a></p>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    </body>
+</html>
