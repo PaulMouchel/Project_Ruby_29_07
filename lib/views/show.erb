@@ -6,24 +6,50 @@
         <title>PAGE POTIN</title>
     </head>
     <body>
-        <nav class="navbar text-center bg-dark justify-content-center">
-            <h1 class="text-light">Voici la page du potin n°<%= id %></h1>
+        <nav class="navbar text-center bg-dark">
+            <h1 class="text-light">The gossip Project</h1>
         </nav>
         <div class="container">
-            <p>Son auteur : ==<%=gossip.author %>==</p>
-            <p>Le contenu du potin : ==<%=gossip.content %>==</p>
-            <p>Commentaires :</p>
-            <% gossip.comments.each do |comment| %>
-                <p><em><%= comment %></em></p>
-            <% end %>
-            <p>Ajouter un commentaire :</p>
-            <form action='/gossips/<%=id %>/' method='POST'>
-              Votre commentaire :  <input type='text' name='gossip_comment'/><br/>
-              <input type='submit'/>
-            </form>
+            <h2>Voici la page du potin n°<%= id %></h2>
 
+            <table class="table">
+              <thead>
+                <tr class="table-primary">
+                  <th scope="col">Potin</th>
+                  <th scope="col">Auteur</th>
+                </tr>
+              </thead>
+              <tbody>
+                    <tr>
+                        <td><strong><%=gossip.content %></strong></td>
+                        <td><strong><%=gossip.author %></strong></td>
+                    </tr>
+              </tbody>
+            </table>
+
+            <table class="table">
+              <thead>
+                <tr class="table-primary">
+                  <th scope="col">Commentaires</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% gossip.comments.each do |comment| %>
+                    <tr>
+                    <td><em><%= comment %></em></td>
+                    </tr>
+                <% end %>
+              </tbody>
+            </table>
+            <form action='/gossips/<%=id %>/' method='POST'>
+                <div class="form-group">
+                    <label>Votre commentaire</label>
+                    <input type='text' class="form-control" name='gossip_comment' placeholder="Enter comment">
+                </div>
+                <input type='submit'/>
+            </form>
+            <p><a href="./edit/"></br>Editer le potin</a></p>
             <p class="text-right"><a href="/">Retour à la page d'accueil</a></p>
-            <p><a href="./edit/">Editer le potin</a></p>
         </div>
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>

@@ -11,15 +11,24 @@
     	</nav>
     	<div class="container">
 	        <h2>Mon super site de gossip</h2>
-	        <p>La liste des potins arrive bientot ! En attendant, n'hésite pas à en créer un nouveau !</p>
-	        <a class="btn btn-success" href="/gossips/new/">Créer un nouveau potin</a>
-	        <p>Liste des potins :</p>
-	        <% gossips.each_with_index do |gossip, index| %>
-
-	        <blockquote><a href="/gossips/<%=index %>/" >
-	    		<p>"<%= gossip.content %>"<br/><%= gossip.author %></p>
-			</a></blockquote>
-	    	<% end %>
+	        <p>Gestionnaire de potins en ligne !</p>
+	        <p><a class="btn btn-success" href="/gossips/new/">Créer un nouveau potin</a></p>
+            <table class="table">
+              <thead>
+                <tr class="table-primary">
+                  <th scope="col">Potin</th>
+                  <th scope="col">Auteur</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% gossips.each_with_index do |gossip, index| %>
+                    <tr><a href="/gossips/<%=index %>/" >
+                    <td><a href="/gossips/<%=index %>/" >"<%= gossip.content %>"</a></td>
+                    <td><a href="/gossips/<%=index %>/" ><%= gossip.author %></a></td>
+                    </a></tr>
+                <% end %>
+              </tbody>
+            </table>
     	</div>
     	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>

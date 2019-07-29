@@ -10,12 +10,14 @@ class Gossip
 	  @comments = comments
 	end
 
+	#Méthode pour enregistrer un gossip
 	def save 
 		CSV.open("db/gossip.csv", "a+") do |csv|
 			csv << [@author, @content, @comments.join("|")]
 		end
 	end
 
+	#Methode pour ajouter un commentaire sur le gossip avec l'id demandé
 	def self.add_comment(id, comment)
 		table = CSV.read("./db/gossip.csv")
 		index = id.to_i
@@ -33,6 +35,7 @@ class Gossip
 		end
 	end
 
+	#Methode pour retourner la liste des commentaires
   def self.all
   	all_gossips = []
   	CSV.read("./db/gossip.csv").each do |csv_line|
@@ -46,10 +49,12 @@ class Gossip
 		return all_gossips
 	end
 
+	#Methode pour retourner le commentaire à l'indice "id"
 	def self.find(id)
 		return self.all[id.to_i]
 	end
 
+	#Methode pour modifier un commentaire
 	def self.update(id, author, content)
 		table = CSV.read("./db/gossip.csv")
 		index = id.to_i

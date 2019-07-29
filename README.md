@@ -3,6 +3,8 @@ The Gossip Project Sinatra
 Bienvenue de ce projet. Pour le tester lancer la commande :
 shotgun -p 4567
 (faites un bundle install avant)
+Puis visitez le site sur votre navigateur à l'adresse :
+http://localhost:4567/
 
 L'arborescence du projet est la suivante
 
